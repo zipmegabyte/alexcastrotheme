@@ -42,10 +42,11 @@ function default_image_options() {
 }
 add_action( 'after_setup_theme', 'default_image_options' );
 
-// function reorder_image_size_list($sizes){
-//     $custom_sizes = array(
-//     'new-image' => '550 Image'
-//     );
-//     return array_merge( $sizes, $custom_sizes );
-// }
-// add_filter('image_size_names_choose', 'reorder_image_size_list');
+function reorder_image_size_list($sizes){
+    $medium_list = array(
+      'medium' => $sizes['medium']
+    );
+    
+    return array_merge( $medium_list, $sizes );
+}
+add_filter('image_size_names_choose', 'reorder_image_size_list');
