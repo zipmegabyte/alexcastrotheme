@@ -1,6 +1,7 @@
 <?php
 add_action( 'wp_enqueue_scripts', 'alex_castro_enqueue_styles' );
 add_action( 'widgets_init', 'alex_castro_sidebar_registration' );
+add_action('after_setup_theme', 'default_image_options');
 
 function alex_castro_enqueue_styles() {
     $parenthandle = 'twentytwenty-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
@@ -34,4 +35,10 @@ function alex_castro_sidebar_registration() {
       )
     )
   );
+}
+
+function custom_image_size() {
+    // Set default values for the upload media box
+    update_option('image_default_align', 'center' );
+    update_option('image_default_size', 'medium' );
 }
