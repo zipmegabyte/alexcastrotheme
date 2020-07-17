@@ -1,8 +1,4 @@
 <?php
-add_action( 'wp_enqueue_scripts', 'alex_castro_enqueue_styles' );
-add_action( 'widgets_init', 'alex_castro_sidebar_registration' );
-add_action('after_setup_theme', 'default_image_options');
-
 function alex_castro_enqueue_styles() {
     $parenthandle = 'twentytwenty-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
     $theme = wp_get_theme();
@@ -15,6 +11,7 @@ function alex_castro_enqueue_styles() {
         $theme->get('Version') // this only works if you have Version in the style header
     );
 }
+add_action( 'wp_enqueue_scripts', 'alex_castro_enqueue_styles' );
 
 function alex_castro_sidebar_registration() {
   // Arguments used in all register_sidebar() calls.
@@ -36,9 +33,19 @@ function alex_castro_sidebar_registration() {
     )
   );
 }
+add_action( 'widgets_init', 'alex_castro_sidebar_registration' );
 
-function custom_image_size() {
+function default_image_options() {
     // Set default values for the upload media box
     update_option('image_default_align', 'center' );
     update_option('image_default_size', 'medium' );
 }
+add_action( 'after_setup_theme', 'default_image_options' );
+
+// function reorder_image_size_list($sizes){
+//     $custom_sizes = array(
+//     'new-image' => '550 Image'
+//     );
+//     return array_merge( $sizes, $custom_sizes );
+// }
+// add_filter('image_size_names_choose', 'reorder_image_size_list');
