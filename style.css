@@ -11,3 +11,7 @@
  Text Domain:  alexcastrotheme
  GitHub Theme URI: https: //github.com/zipmegabyte/alexcastrotheme
 */
+
+.width-auto {
+  width: auto !important
+}
